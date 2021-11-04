@@ -5,7 +5,7 @@ service: serverless-todo-app
 
 plugins:
   - serverless-offline
-  # - serverless-webpack
+  - serverless-webpack
 #   - serverless-iam-roles-per-function
 #   - serverless-plugin-tracing
 
