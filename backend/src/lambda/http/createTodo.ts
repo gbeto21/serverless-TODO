@@ -6,16 +6,25 @@ import { CreateTodoRequest } from '../../requests/CreateTodoRequest'
 import { getUserId } from '../utils';
 import { createTodo } from '../../businessLogic/todos'
 
-export const handler = middy(
+export const handler =
+  // middy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const newTodo: CreateTodoRequest = JSON.parse(event.body)
     // TODO: Implement creating a new TODO item
+    console.log("New Todo: ", newTodo);
+    
+    return {
+      statusCode: 200,
+      body: JSON.stringify(
+        {
+          message: "TODO added."
+        }
+      )
+    }
+  }
 
-    return undefined
-)
-
-handler.use(
-  cors({
-    credentials: true
-  })
-)
+// handler.use(
+//   cors({
+//     credentials: true
+//   })
+// )
