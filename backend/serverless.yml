@@ -91,8 +91,8 @@ functions:
           # authorizer: Auth
           # reqValidatorName: 'RequestBodyValidator'
           documentation:
-            summary: Create a new todo item
-            description: Create a todo item
+            summary: Create a new todo
+            description: Create a new todo
             requestModels:
               'application/json': CreateTodo
           request:
@@ -109,6 +109,14 @@ functions:
       - http:
           method: patch
           path: todos/{todoId}
+          documentation:
+            summary: Update a existing todo
+            description: Update a existing todo
+            requestModels:
+              'application/json': UpdateTodo
+          request:
+            schema:
+              application/json: ${file(models/update-todo-model.json)}
 
   # TODO: Configure this function
   # Provide property for setting up CORS, Authorizer, iamRoleStatements
