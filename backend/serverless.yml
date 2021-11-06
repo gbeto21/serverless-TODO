@@ -57,7 +57,6 @@ custom:
         schema: ${file(models/create-todo-model.json)}
       - name: UpdateTodo
         contentType: application/json
-        # the schema definition is a file that is located here
         schema: ${file(models/update-todo-model.json)}
 
 functions:
@@ -73,7 +72,7 @@ functions:
       - http:
           method: get
           path: todos
-          # cors: true
+          cors: true
           # authorizer: Auth
 
   # TODO: Configure this function - 
@@ -86,7 +85,7 @@ functions:
       - http:
           method: post
           path: todos
-          # cors: true
+          cors: true
           # so we specified here that it should use the auth func. specified before
           # authorizer: Auth
           # reqValidatorName: 'RequestBodyValidator'
@@ -98,8 +97,6 @@ functions:
           request:
             schema:
               application/json: ${file(models/create-todo-model.json)}
-  #         cors: true
-  #         authorizer: Auth
 
   # TODO: Configure this function
   # Provide property for setting up CORS, Authorizer, iamRoleStatements, and request schemas
@@ -109,6 +106,7 @@ functions:
       - http:
           method: patch
           path: todos/{todoId}
+          cors: true
           documentation:
             summary: Update a existing todo
             description: Update a existing todo
@@ -126,6 +124,7 @@ functions:
       - http:
           method: delete
           path: todos/{todoId}
+          cors: true
 
   # TODO: Configure this function
   # Provide property for setting up CORS, Authorizer, iamRoleStatements
@@ -135,6 +134,7 @@ functions:
       - http:
           method: post
           path: todos/{todoId}/attachment
+          cors: true
 
 resources:
   Resources:
