@@ -90,13 +90,13 @@ functions:
           # so we specified here that it should use the auth func. specified before
           # authorizer: Auth
           # reqValidatorName: 'RequestBodyValidator'
-          # documentation:
-          #   summary: Create a new todo item
-          #   description: Create a todo item
-          #   requestModels:
-          #     'application/json': CreateTodo
+          documentation:
+            summary: Create a new todo item
+            description: Create a todo item
+            requestModels:
+              'application/json': CreateTodo
           request:
-            schemas:
+            schema:
               application/json: ${file(models/create-todo-model.json)}
   #         cors: true
   #         authorizer: Auth
