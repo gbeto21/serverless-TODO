@@ -88,8 +88,8 @@ functions:
           method: post
           path: todos
           cors: true
+          authorizer: Auth
           # so we specified here that it should use the auth func. specified before
-          # authorizer: Auth
           # reqValidatorName: 'RequestBodyValidator'
           documentation:
             summary: Create a new todo
