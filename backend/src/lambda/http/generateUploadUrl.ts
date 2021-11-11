@@ -18,7 +18,7 @@ export const handler =
         statusCode: 200,
         body: JSON.stringify(
           {
-            message: "Gretings from generateUploadUrl Todo"
+            uploadUrl: "https://s3-bucket-name.s3.eu-west-2.amazonaws.com/image.png"
           }
         )
       }
