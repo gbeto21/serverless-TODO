@@ -15,11 +15,7 @@ export const handler =
 
       return {
         statusCode: 200,
-        body: JSON.stringify(
-          {
-            message: "Gretings from delete Todo"
-          }
-        )
+        body: ''
       }
     }
   )
