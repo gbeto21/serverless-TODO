@@ -67,12 +67,13 @@ export class TodosAccess {
 			})
 			.promise()
 
-		await this.s3
-			.deleteObject({
-				Bucket: this.s3Bucket,
-				Key: todoId
-			})
-			.promise()
+		//TODO: implement this logic.
+		// await this.s3
+		// 	.deleteObject({
+		// 		Bucket: this.s3Bucket,
+		// 		Key: todoId
+		// 	})
+		// 	.promise()
 
 		return result
 	}
