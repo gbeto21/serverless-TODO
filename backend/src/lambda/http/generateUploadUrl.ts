@@ -8,7 +8,7 @@ import { generateUploadUrl } from "../../helpers/attachmentUtils";
 import { getToken } from '../utils';
 import { createLogger } from '../../utils/logger'
 
-const logger = createLogger('createTodo')
+const logger = createLogger('generateUploadUrl')
 
 export const handler =
   middy(
@@ -21,7 +21,7 @@ export const handler =
       const jwtToken = getToken(event)
       const result = await generateUploadUrl(jwtToken, todoId)
 
-      // return a presigned URL to upload a file for a TODO item with the provided id
+      logger.info('Returning url signed', result.body)
       return {
         statusCode: result.statusCode,
         body: JSON.stringify({

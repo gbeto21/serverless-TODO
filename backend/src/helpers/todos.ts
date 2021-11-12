@@ -5,12 +5,10 @@ import { UpdateTodoRequest } from '../requests/UpdateTodoRequest'
 import { createLogger } from '../utils/logger'
 import { parseUserId } from '../auth/utils'
 import * as uuid from 'uuid'
-import * as createError from 'http-errors'
+// import * as createError from 'http-errors'
 
-// TODO: Implement businessLogic
 const logger = createLogger('todos')
 
-// all code that works with DynamoDB is encapsulated in the dataLayer called TodoAccess
 const todoAccess = new TodosAccess()
 
 export async function getTodos(jwtToken: string): Promise<TodoItem[]> {

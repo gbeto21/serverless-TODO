@@ -26,7 +26,7 @@ export const handler =
 
       const jwtToken = getToken(event)
       const result = await updatedTodo(jwtToken, todoId, parsedBody)
-
+      logger.info('todo updated', todoId)
       return {
         statusCode: result.statusCode,
         body: result.body
