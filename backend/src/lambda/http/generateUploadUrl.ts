@@ -4,23 +4,29 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import * as middy from 'middy'
 import { cors, httpErrorHandler } from 'middy/middlewares'
 
-// import { createAttachmentPresignedUrl } from '../../businessLogic/todos'
-// import { getUserId } from '../utils'
+import { generateUploadUrl } from "../../helpers/attachmentUtils";
+import { getToken } from '../utils';
+import { createLogger } from '../../utils/logger'
+
+const logger = createLogger('createTodo')
 
 export const handler =
   middy(
     async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+      logger.info('Processing generateUploadUrl Event: ', {
+        event
+      })
+
       const todoId = event.pathParameters.todoId
-      // TODO: Return a presigned URL to upload a file for a TODO item with the provided id
+      const jwtToken = getToken(event)
+      const result = await generateUploadUrl(jwtToken, todoId)
 
-
+      // return a presigned URL to upload a file for a TODO item with the provided id
       return {
-        statusCode: 200,
-        body: JSON.stringify(
-          {
-            uploadUrl: "https://s3-bucket-name.s3.eu-west-2.amazonaws.com/image.png"
-          }
-        )
+        statusCode: result.statusCode,
+        body: JSON.stringify({
+          uploadUrl: result.body
+        })
       }
     }
   )

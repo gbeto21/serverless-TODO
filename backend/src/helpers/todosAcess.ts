@@ -13,8 +13,8 @@ export class TodosAccess {
 		private readonly docClient: DocumentClient = createDynamoDBClient(),
 		private readonly todosTable = process.env.TODOS_TABLE,
 		private readonly s3 = new AWS.S3({ signatureVersion: 'v4' }),
-		private readonly s3Bucket = process.env.TODOS_IMAGES_S3_BUCKET,
-		private readonly urlExpiration = process.env.TODOS_SIGNED_URL_EXPIRATION
+		private readonly s3Bucket = process.env.ATTACHMENT_S3_BUCKET,
+		private readonly urlExpiration = process.env.SIGNED_URL_EXPIRATION
 	) { }
 
 	async getTodos(userId): Promise<TodoItem[]> {
