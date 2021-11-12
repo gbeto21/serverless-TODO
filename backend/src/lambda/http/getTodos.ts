@@ -4,8 +4,8 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import * as middy from 'middy'
 import { cors } from 'middy/middlewares'
 
-// import { getTodosForUser as getTodosForUser } from '../../businessLogic/todos'
-// import { getUserId } from '../utils';
+import { getTodos } from "../../helpers/todos";
+import { getToken } from '../utils';
 
 // TODO: Get all TODO items for a current user
 export const handler =
@@ -31,11 +31,17 @@ export const handler =
         },
       ]
 
+      const jwtToken = getToken(event)
+
+      let items = []
+      if (jwtToken) {
+        items = await getTodos(jwtToken)
+      }
       return {
         statusCode: 200,
         body: JSON.stringify(
           {
-            items: todos
+            items
           }
         )
       }
