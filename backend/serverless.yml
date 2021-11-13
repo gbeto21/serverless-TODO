@@ -28,6 +28,8 @@ provider:
     TODOS_CREATED_AT_INDEX: CreatedAtIndex
     ATTACHMENT_S3_BUCKET: todos-images-${self:provider.stage}-21
     SIGNED_URL_EXPIRATION: 650
+    AWS_XRAY_CONTEXT_MISSING: LOG_ERROR
+    _X_AMZN_TRACE_ID: 0
 
   iam:
     role:
