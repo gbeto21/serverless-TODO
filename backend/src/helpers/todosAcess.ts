@@ -66,13 +66,12 @@ export class TodosAccess {
 			})
 			.promise()
 
-		//TODO: implement this logic.
-		// await this.s3
-		// 	.deleteObject({
-		// 		Bucket: this.s3Bucket,
-		// 		Key: todoId
-		// 	})
-		// 	.promise()
+		await this.s3
+			.deleteObject({
+				Bucket: this.s3Bucket,
+				Key: todoId
+			})
+			.promise()
 
 		return result
 	}
@@ -215,13 +214,8 @@ export class TodosAccess {
 	}
 }
 function createDynamoDBClient(): AWS.DynamoDB.DocumentClient {
-	// if you are offline, serverless offline will set this variable IS_OFFLINE to true
 	if (process.env.IS_OFFLINE) {
 		logger.info('Creating a local DynamoDB instance')
-		// return new XAWS.DynamoDB.DocumentClient({
-		// 	region: 'localhost',
-		// 	endpoint: 'http://localhost:8000'
-		// })
 		return new AWS.DynamoDB.DocumentClient({
 			region: 'localhost',
 			endpoint: 'http://localhost:8000'
@@ -229,5 +223,4 @@ function createDynamoDBClient(): AWS.DynamoDB.DocumentClient {
 	}
 
 	return new AWS.DynamoDB.DocumentClient()
-	// return new XAWS.DynamoDB.DocumentClient()
 }
