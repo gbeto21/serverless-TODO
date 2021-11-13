@@ -11,6 +11,11 @@ plugins:
   - serverless-offline
 
 provider:
+
+  tracing: 
+    lambda: true
+    apiGateway: true
+
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: '20201221'
